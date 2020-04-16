@@ -18,6 +18,13 @@ def potencia(base,exponente):
 		abort(404)
 	return render_template("potencia.html",base=base,exponente=exponente,res=resultado)
 
+@app.route('/cuenta/<palabra>/<letra>',methods=["GET","POST"])
+def cuentaletras(palabra,letra):
+	if len(letra)!=1:
+		abort(404)
+	else:
+		resultado=palabra.count(letra)
+	return render_template("cuentaletras.html",palabra=palabra,letra=letra,res=resultado)
 
 @app.route('/cuenta/<palabra>/<letra>',methods=["GET","POST"])
 def cuentaletras(palabra,letra):
@@ -26,6 +33,7 @@ def cuentaletras(palabra,letra):
 	else:
 		resultado=palabra.count(letra)
 	return render_template("cuentaletras.html",palabra=palabra,letra=letra,res=resultado)
+
 
 
 app.run(debug=True)
